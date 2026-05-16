@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>US Dental Care – Sacramento, CA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --white:    #ffffff;
+      --off-white:#f5f9fb;
+      --seafoam:  #62b5a0;
+      --seafoam-light: #a8d8ce;
+      --seafoam-pale:  #e0f4f0;
+      --blue:     #1a4c8b;
+      --blue-mid: #2563b0;
+      --blue-light:#ddeaf8;
+      --navy:     #0d2d56;
+      --text:     #1e2a38;
+      --muted:    #607080;
+      --gold:     #c8a84b;
+      --border:   #d5e8f3;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+      box-shadow: 0 2px 24px rgba(26,76,139,0.07);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 48px; width: 48px;
+      object-fit: contain; border-radius: 10px;
+    }
+    .nav-logo-text {
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+    .nav-logo-text span:first-child {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700; font-size: 1.15rem;
+      color: var(--blue);
+      letter-spacing: 0.01em;
+    }
+    .nav-logo-text span:last-child {
+      font-size: 0.68rem; color: var(--seafoam);
+      font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex; gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--text);
+      font-size: 0.88rem; font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 2px; background: var(--seafoam);
+      transform: scaleX(0); transition: transform 0.25s;
+      transform-origin: left;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white) !important;
+      padding: 10px 22px; border-radius: 50px;
+      font-weight: 600; font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 16px rgba(26,76,139,0.22);
+    }
+    .nav-cta:hover { background: var(--seafoam) !important; transform: translateY(-1px); }
+
+    /* ─── HERO ───────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 72px;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e8f6f2 50%, #f5f9fb 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; top: -120px; right: -120px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(98,181,160,0.18) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -80px; left: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(26,76,139,0.1) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 6% 80px 8%;
+      position: relative; z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--seafoam-pale); color: var(--seafoam);
+      border: 1px solid var(--seafoam-light);
+      padding: 6px 16px; border-radius: 50px;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 28px;
+      width: fit-content;
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-badge::before { content: '♀'; font-size: 0.85rem; }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 700; line-height: 1.1;
+      color: var(--navy);
+      margin-bottom: 12px;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .hero-title em {
+      font-style: italic; color: var(--seafoam);
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem; color: var(--muted); font-weight: 300;
+      line-height: 1.7; margin-bottom: 36px; max-width: 440px;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-stats {
+      display: flex; gap: 32px; margin-bottom: 40px;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+    .stat {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.1rem; font-weight: 700; color: var(--blue);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem; color: var(--muted); font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .stat-divider {
+      width: 1px; background: var(--border); align-self: stretch;
+    }
+
+    .hero-btns {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      padding: 14px 30px; border-radius: 50px;
+      font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; letter-spacing: 0.03em;
+      transition: all 0.2s;
+      box-shadow: 0 6px 20px rgba(26,76,139,0.3);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--blue-mid); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(26,76,139,0.35); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--blue);
+      padding: 14px 30px; border-radius: 50px;
+      font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; letter-spacing: 0.03em;
+      border: 2px solid var(--blue);
+      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-secondary:hover { background: var(--blue); color: var(--white); transform: translateY(-2px); }
+
+    /* ─── HERO RIGHT — 16:9 image ─────────────────── */
+    .hero-right {
+      position: relative; overflow: hidden;
+      animation: fadeUp 0.9s 0.2s ease both;
+      /* enforce 16:9 on the right panel */
+      aspect-ratio: 16 / 9;
+      align-self: center;
+    }
+    .hero-right img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .hero-rating-pill {
+      position: absolute; bottom: 48px; left: -20px;
+      background: var(--white);
+      border-radius: 16px; padding: 16px 22px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+      display: flex; align-items: center; gap: 12px;
+      animation: slideIn 0.8s 0.6s ease both;
+    }
+    .rating-stars { color: #f59e0b; font-size: 1rem; }
+    .rating-info { display: flex; flex-direction: column; gap: 2px; }
+    .rating-num { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; color: var(--navy); line-height: 1; }
+    .rating-count { font-size: 0.72rem; color: var(--muted); font-weight: 500; }
+
+    /* ─── FEATURES STRIP ─────────────────────────── */
+    .features-strip {
+      background: var(--blue);
+      padding: 28px 8%;
+      display: flex; justify-content: center; gap: 60px;
+      flex-wrap: wrap;
+    }
+    .feat {
+      display: flex; align-items: center; gap: 12px;
+      color: var(--white);
+    }
+    .feat-icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .feat-text { display: flex; flex-direction: column; gap: 2px; }
+    .feat-text strong { font-size: 0.88rem; font-weight: 600; }
+    .feat-text span { font-size: 0.73rem; opacity: 0.75; letter-spacing: 0.03em; }
+
+    /* ─── SECTION COMMON ─────────────────────────── */
+    section { padding: 96px 8%; }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--seafoam); margin-bottom: 14px;
+      position: relative; padding-left: 28px;
+    }
+    .section-tag::before {
+      content: ''; position: absolute; left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 18px; height: 2px; background: var(--seafoam);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700; color: var(--navy);
+      line-height: 1.15; margin-bottom: 16px;
+    }
+    .section-title em { font-style: italic; color: var(--seafoam); }
+    .section-sub {
+      font-size: 1rem; color: var(--muted);
+      font-weight: 300; line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ─── ABOUT SECTION ──────────────────────────── */
+    .about {
+      background: var(--off-white);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px;
+      align-items: center;
+    }
+    /* About image — 16:9 */
+    .about-img-wrap {
+      position: relative; border-radius: 24px; overflow: hidden;
+      aspect-ratio: 16 / 9;
+    }
+    .about-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+    }
+    .about-img-badge {
+      position: absolute; top: 24px; right: 24px;
+      background: var(--seafoam); color: var(--white);
+      padding: 10px 18px; border-radius: 50px;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .about-checklist {
+      list-style: none; margin: 28px 0 36px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .about-checklist li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.93rem; color: var(--text); line-height: 1.5;
+    }
+    .check-icon {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--seafoam); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; flex-shrink: 0; margin-top: 2px;
+    }
+    .about-address {
+      background: var(--blue-light);
+      border-left: 4px solid var(--blue);
+      padding: 16px 20px; border-radius: 0 12px 12px 0;
+      font-size: 0.88rem; color: var(--blue); line-height: 1.6;
+    }
+    .about-address strong { display: block; font-weight: 600; margin-bottom: 4px; }
+
+    /* ─── SERVICES ───────────────────────────────── */
+    .services { background: var(--white); }
+    .services-header { text-align: center; margin-bottom: 64px; }
+    .services-header .section-sub { margin: 0 auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    /* Colorful accent per card — no number badge */
+    .service-card {
+      border-radius: 20px; overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--border);
+      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      cursor: default;
+      position: relative;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.13);
+    }
+
+    /* Colored top accent bar per card */
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+      z-index: 2;
+    }
+    .service-card:nth-child(1)::before { background: linear-gradient(90deg, #e74c6f, #ff8fab); }
+    .service-card:nth-child(2)::before { background: linear-gradient(90deg, #6c5ce7, #a29bfe); }
+    .service-card:nth-child(3)::before { background: linear-gradient(90deg, #f39c12, #fdcb6e); }
+    .service-card:nth-child(4)::before { background: linear-gradient(90deg, #00b894, #55efc4); }
+    .service-card:nth-child(5)::before { background: linear-gradient(90deg, #0984e3, #74b9ff); }
+    .service-card:nth-child(6)::before { background: linear-gradient(90deg, #e17055, #fab1a0); }
+
+    /* Hover border colours per card */
+    .service-card:nth-child(1):hover { border-color: #e74c6f; box-shadow: 0 24px 60px rgba(231,76,111,0.18); }
+    .service-card:nth-child(2):hover { border-color: #6c5ce7; box-shadow: 0 24px 60px rgba(108,92,231,0.18); }
+    .service-card:nth-child(3):hover { border-color: #f39c12; box-shadow: 0 24px 60px rgba(243,156,18,0.18); }
+    .service-card:nth-child(4):hover { border-color: #00b894; box-shadow: 0 24px 60px rgba(0,184,148,0.18); }
+    .service-card:nth-child(5):hover { border-color: #0984e3; box-shadow: 0 24px 60px rgba(9,132,227,0.18); }
+    .service-card:nth-child(6):hover { border-color: #e17055; box-shadow: 0 24px 60px rgba(225,112,85,0.18); }
+
+    /* Service image — photos are natively 16:9 so just display at full width */
+    .service-img {
+      overflow: hidden;
+      position: relative;
+      line-height: 0;
+    }
+    .service-img img {
+      width: 100%; height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .service-card:hover .service-img img { transform: scale(1.06); }
+
+    /* Coloured emoji icon replacing the number */
+    .service-icon-badge {
+      position: absolute; top: 12px; right: 12px;
+      width: 38px; height: 38px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      backdrop-filter: blur(6px);
+      z-index: 3;
+    }
+    .service-card:nth-child(1) .service-icon-badge { background: rgba(231,76,111,0.85); }
+    .service-card:nth-child(2) .service-icon-badge { background: rgba(108,92,231,0.85); }
+    .service-card:nth-child(3) .service-icon-badge { background: rgba(243,156,18,0.85); }
+    .service-card:nth-child(4) .service-icon-badge { background: rgba(0,184,148,0.85); }
+    .service-card:nth-child(5) .service-icon-badge { background: rgba(9,132,227,0.85); }
+    .service-card:nth-child(6) .service-icon-badge { background: rgba(225,112,85,0.85); }
+
+    .service-body { padding: 22px 24px 24px; }
+    .service-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 10px;
+    }
+    .service-body p {
+      font-size: 0.87rem; color: var(--muted);
+      line-height: 1.65;
+    }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 14px;
+      font-size: 0.82rem; font-weight: 600;
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: gap 0.2s;
+    }
+    .service-link:hover { gap: 10px; }
+    .service-link::after { content: '→'; }
+
+    /* Per-card link colours */
+    .service-card:nth-child(1) .service-link { color: #e74c6f; }
+    .service-card:nth-child(2) .service-link { color: #6c5ce7; }
+    .service-card:nth-child(3) .service-link { color: #f39c12; }
+    .service-card:nth-child(4) .service-link { color: #00b894; }
+    .service-card:nth-child(5) .service-link { color: #0984e3; }
+    .service-card:nth-child(6) .service-link { color: #e17055; }
+
+    /* ─── GALLERY STRIP ──────────────────────────── */
+    .gallery-strip {
+      padding: 0 8% 96px;
+      background: var(--white);
+    }
+    /* Gallery images — 16:9 */
+    .gallery-strip-inner {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 16px; border-radius: 24px; overflow: hidden;
+    }
+    .gallery-strip-inner > div {
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+    }
+    .gallery-strip-inner img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; transition: transform 0.4s;
+    }
+    .gallery-strip-inner img:hover { transform: scale(1.03); }
+
+    /* ─── REVIEWS ────────────────────────────────── */
+    .reviews {
+      background: linear-gradient(160deg, #0d2d56 0%, #1a4c8b 60%, #1b6a5e 100%);
+      position: relative; overflow: hidden;
+    }
+    .reviews::before {
+      content: '"';
+      position: absolute; top: -40px; left: 5%;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 280px; color: rgba(255,255,255,0.04);
+      line-height: 1; pointer-events: none;
+    }
+    .reviews .section-tag { color: var(--seafoam-light); }
+    .reviews .section-title { color: var(--white); }
+    .reviews .section-sub { color: rgba(255,255,255,0.6); }
+
+    .reviews-top {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 52px; flex-wrap: wrap; gap: 24px;
+    }
+    .reviews-rating-block {
+      display: flex; align-items: center; gap: 20px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 20px 28px; border-radius: 16px;
+    }
+    .big-rating {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 700; color: var(--white); line-height: 1;
+    }
+    .big-rating-info { display: flex; flex-direction: column; gap: 6px; }
+    .stars-row { color: #f59e0b; font-size: 1.1rem; letter-spacing: 2px; }
+    .reviews-count { font-size: 0.82rem; color: rgba(255,255,255,0.65); }
+
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border-radius: 18px; padding: 28px;
+      transition: background 0.3s;
+    }
+    .review-card:hover { background: rgba(255,255,255,0.12); }
+    .review-stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 14px; }
+    .review-text {
+      font-size: 0.92rem; color: rgba(255,255,255,0.85);
+      line-height: 1.7; margin-bottom: 20px;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .author-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--seafoam), var(--blue-mid));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.9rem; color: var(--white);
+      flex-shrink: 0;
+    }
+    .author-info { display: flex; flex-direction: column; gap: 2px; }
+    .author-name { font-size: 0.88rem; color: var(--white); font-weight: 600; }
+    .author-meta { font-size: 0.74rem; color: rgba(255,255,255,0.5); }
+
+    /* ─── CONTACT / CTA ──────────────────────────── */
+    .contact-cta {
+      background: var(--off-white);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px;
+      align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 28px; }
+    .contact-item {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .contact-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: var(--blue); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-detail { display: flex; flex-direction: column; gap: 4px; }
+    .contact-detail strong {
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .contact-detail a,
+    .contact-detail span {
+      font-size: 0.95rem; color: var(--text);
+      text-decoration: none; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .contact-detail a:hover { color: var(--seafoam); }
+
+    .cta-box {
+      background: var(--blue);
+      border-radius: 24px; padding: 48px 40px;
+      color: var(--white);
+      position: relative; overflow: hidden;
+    }
+    .cta-box::before {
+      content: ''; position: absolute;
+      width: 280px; height: 280px; border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      top: -80px; right: -80px;
+    }
+    .cta-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem; font-weight: 700;
+      margin-bottom: 12px; position: relative;
+    }
+    .cta-box p {
+      font-size: 0.92rem; opacity: 0.75;
+      line-height: 1.65; margin-bottom: 32px;
+      position: relative;
+    }
+    .cta-phone {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; position: relative;
+    }
+    .cta-phone-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem; font-weight: 700;
+      color: var(--white); text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .cta-phone-num:hover { color: var(--seafoam-light); }
+    .btn-cta-white {
+      display: inline-block;
+      background: var(--white); color: var(--blue);
+      padding: 14px 32px; border-radius: 50px;
+      font-weight: 700; font-size: 0.88rem;
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: all 0.2s; position: relative;
+    }
+    .btn-cta-white:hover { background: var(--seafoam); color: var(--white); transform: translateY(-2px); }
+    .hours-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      padding: 8px 16px; border-radius: 50px;
+      font-size: 0.8rem; color: rgba(255,255,255,0.85);
+      margin-top: 20px; position: relative;
+    }
+    .hours-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; animation: pulse 2s infinite; }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      padding: 48px 8%;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .footer-brand {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .footer-brand img {
+      height: 44px; width: 44px; object-fit: contain;
+      border-radius: 10px; filter: brightness(1.1);
+    }
+    .footer-brand-text { display: flex; flex-direction: column; gap: 2px; }
+    .footer-brand-text strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; color: var(--white); font-weight: 700;
+    }
+    .footer-brand-text span { font-size: 0.72rem; letter-spacing: 0.07em; color: var(--seafoam-light); }
+    .footer-center { font-size: 0.8rem; text-align: center; line-height: 1.7; }
+    .footer-center a { color: var(--seafoam-light); text-decoration: none; }
+    .footer-right { display: flex; gap: 20px; }
+    .footer-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+    .footer-link:hover { color: var(--seafoam-light); }
+
+    /* ─── MAP ────────────────────────────────────── */
+    .map-section { padding: 0; }
+    .map-section iframe {
+      width: 100%; height: 380px; border: 0; display: block;
+    }
+
+    /* ─── FLOATING CALL BUTTON ───────────────────── */
+    .float-call {
+      position: fixed;
+      bottom: 20px; right: 20px;
+      z-index: 2000;
+      display: flex; align-items: center; gap: 7px;
+      background: #25d366;
+      color: var(--white);
+      text-decoration: none;
+      padding: 9px 16px 9px 10px;
+      border-radius: 50px;
+      font-weight: 700; font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.42);
+      transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+      animation: floatPop 0.6s 1s ease both;
+    }
+    .float-call:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 10px 28px rgba(37,211,102,0.52);
+      background: #1ebe5d;
+    }
+    .float-call-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(255,255,255,0.22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; flex-shrink: 0;
+    }
+    .float-call-text {
+      display: flex; flex-direction: column; gap: 0px; line-height: 1.2;
+    }
+    .float-call-text span:first-child {
+      font-size: 0.6rem; font-weight: 500;
+      opacity: 0.85; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .float-call-text span:last-child {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.01em;
+    }
+    .float-call::before {
+      content: '';
+      position: absolute; inset: -5px;
+      border-radius: 50px;
+      border: 2px solid #25d366;
+      opacity: 0;
+      animation: callRing 2.5s 2s infinite;
+    }
+    @keyframes callRing {
+      0%   { opacity: 0.6; transform: scale(1); }
+      100% { opacity: 0;   transform: scale(1.16); }
+    }
+    @keyframes floatPop {
+      from { opacity: 0; transform: translateY(20px) scale(0.85); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; } 50% { opacity: 0.4; }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── TABLET (≤900px) ────────────────────────── */
+    @media (max-width: 900px) {
+      section { padding: 64px 5%; }
+
+      /* Nav */
+      nav { padding: 0 4%; height: 64px; }
+      nav .nav-links { display: none; }
+      .nav-logo img { height: 38px; width: 38px; }
+      .nav-logo-text span:first-child { font-size: 1rem; }
+
+      /* Hero */
+      .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 64px; }
+      .hero-left { padding: 48px 5% 32px; }
+      .hero-right { width: 100%; aspect-ratio: 16/9; }
+      .hero-right img { clip-path: none; }
+      .hero-rating-pill { bottom: 16px; left: 12px; padding: 10px 14px; gap: 8px; }
+      .rating-num { font-size: 1.2rem; }
+
+      /* About */
+      .about { grid-template-columns: 1fr; gap: 36px; }
+
+      /* Services */
+      .services-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+
+      /* Gallery */
+      .gallery-strip { padding: 0 5% 64px; }
+      .gallery-strip-inner { grid-template-columns: 1fr 1fr; }
+
+      /* Reviews */
+      .reviews-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .reviews-top { flex-direction: column; align-items: flex-start; }
+
+      /* Contact */
+      .contact-cta { grid-template-columns: 1fr; gap: 36px; }
+
+      /* Footer */
+      footer { flex-direction: column; text-align: center; gap: 16px; padding: 36px 5%; }
+      .footer-right { justify-content: center; flex-wrap: wrap; }
+    }
+
+    /* ─── MOBILE (≤600px) ────────────────────────── */
+    @media (max-width: 600px) {
+      section { padding: 52px 4%; }
+
+      /* Nav — icon only on small screens */
+      nav { padding: 0 4%; height: 60px; }
+      .nav-logo-text span:last-child { display: none; }
+      .nav-cta { padding: 8px 14px; font-size: 0.78rem; }
+
+      /* Hero */
+      .hero-left { padding: 36px 4% 24px; }
+      .hero-badge { font-size: 0.68rem; padding: 5px 12px; margin-bottom: 18px; }
+      .hero-title { font-size: clamp(2rem, 8vw, 2.8rem); margin-bottom: 10px; }
+      .hero-tagline { font-size: 0.92rem; margin-bottom: 24px; }
+      .hero-stats { gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+      .stat-num { font-size: 1.6rem; }
+      .stat-label { font-size: 0.68rem; }
+      .hero-btns { flex-direction: column; gap: 10px; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; padding: 13px 20px; font-size: 0.85rem; }
+      .hero-right { aspect-ratio: 16/9; }
+      .hero-rating-pill { display: none; } /* too cluttered on small screens */
+
+      /* Features strip */
+      .features-strip { gap: 20px; padding: 20px 4%; justify-content: flex-start; }
+      .feat { flex: 1 1 calc(50% - 10px); min-width: 130px; }
+      .feat-icon { width: 36px; height: 36px; font-size: 1rem; }
+      .feat-text strong { font-size: 0.78rem; }
+      .feat-text span { font-size: 0.66rem; }
+
+      /* Section titles */
+      .section-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+      .section-sub { font-size: 0.88rem; }
+
+      /* About */
+      .about { gap: 28px; }
+      .about-checklist li { font-size: 0.85rem; }
+      .about-address { font-size: 0.82rem; }
+      .about-img-badge { font-size: 0.68rem; padding: 7px 12px; top: 12px; right: 12px; }
+
+      /* Services */
+      .services-grid { grid-template-columns: 1fr; gap: 16px; }
+      .service-body { padding: 16px 18px 20px; }
+      .service-body h3 { font-size: 1.15rem; }
+      .service-body p { font-size: 0.82rem; }
+
+      /* Gallery */
+      .gallery-strip { padding: 0 4% 52px; }
+      .gallery-strip-inner { grid-template-columns: 1fr; }
+
+      /* Reviews */
+      .reviews-grid { grid-template-columns: 1fr; }
+      .reviews-rating-block { width: 100%; }
+      .big-rating { font-size: 2.8rem; }
+      .review-card { padding: 20px; }
+      .review-text { font-size: 0.85rem; }
+
+      /* Contact */
+      .contact-item { gap: 12px; }
+      .contact-icon { width: 40px; height: 40px; font-size: 0.95rem; border-radius: 10px; }
+      .contact-detail a, .contact-detail span { font-size: 0.88rem; }
+      .cta-box { padding: 32px 24px; }
+      .cta-box h3 { font-size: 1.5rem; }
+      .cta-phone-num { font-size: 1.5rem; }
+      .btn-cta-white { width: 100%; text-align: center; padding: 13px 20px; }
+
+      /* Map */
+      .map-section iframe { height: 260px; }
+
+      /* Footer */
+      footer { padding: 28px 4%; gap: 14px; }
+      .footer-center { font-size: 0.74rem; }
+      .footer-brand-text strong { font-size: 0.95rem; }
+
+      /* Float call — icon-only circle on mobile */
+      .float-call { padding: 12px; border-radius: 50%; bottom: 20px; right: 16px; gap: 0; }
+      .float-call-text { display: none; }
+      .float-call-icon { width: 32px; height: 32px; font-size: 1rem; background: transparent; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#">
+    <img src="images/uslogo.jpg" alt="US Dental Care Logo"/>
+    <div class="nav-logo-text">
+      <span>US Dental Care</span>
+      <span>Sacramento, CA</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="tel:+19163333534">📞 Call Now</a>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Women-Owned Practice · Sacramento, CA</div>
+    <h1 class="hero-title">
+      Your Smile,<br/>
+      Our <em>Finest</em> Care
+    </h1>
+    <p class="hero-tagline">
+      Experience compassionate, comprehensive dental care in Sacramento's most trusted women-owned clinic. Expert treatment, gentle hands, and a team that truly listens.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">4.9★</span>
+        <span class="stat-label">Google Rating</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">295</span>
+        <span class="stat-label">Patient Reviews</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Patient-First Care</span>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a class="btn-primary" href="tel:+19163333534">📞 +1 916-333-3534</a>
+      <a class="btn-secondary" href="#services">View Services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="images/us1.jpg" alt="US Dental Care Exterior"/>
+    <div class="hero-rating-pill">
+      <span class="rating-stars">★★★★★</span>
+      <div class="rating-info">
+        <span class="rating-num">4.9</span>
+        <span class="rating-count">295 Google Reviews</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FEATURES STRIP ────────────────────────────── -->
+<div class="features-strip">
+  <div class="feat">
+    <div class="feat-icon">🦷</div>
+    <div class="feat-text"><strong>Comprehensive Dentistry</strong><span>Full Range of Services</span></div>
+  </div>
+  <div class="feat">
+    <div class="feat-icon">💎</div>
+    <div class="feat-text"><strong>Modern Equipment</strong><span>Latest Technology</span></div>
+  </div>
+  <div class="feat">
+    <div class="feat-icon">✨</div>
+    <div class="feat-text"><strong>Hygienic &amp; Clean</strong><span>Spotless Environment</span></div>
+  </div>
+  <div class="feat">
+    <div class="feat-icon">♀</div>
+    <div class="feat-text"><strong>Women-Owned</strong><span>Trusted Local Practice</span></div>
+  </div>
+  <div class="feat">
+    <div class="feat-icon">⏱</div>
+    <div class="feat-text"><strong>Short Wait Times</strong><span>Efficient Scheduling</span></div>
+  </div>
+</div>
+
+<!-- ─── ABOUT ─────────────────────────────────────── -->
+<section class="about reveal" id="about">
+  <div class="about-img-wrap">
+    <img src="images/us2.jpg" alt="US Dental Care Interior"/>
+    <span class="about-img-badge">Est. Sacramento, CA</span>
+  </div>
+  <div>
+    <span class="section-tag">About Us</span>
+    <h2 class="section-title">Care That Puts<br/><em>You First</em></h2>
+    <p class="section-sub">
+      At US Dental Care, every patient deserves a stress-free, comfortable experience. Our knowledgeable, caring team takes time to listen to your concerns and explain every step — so you leave with confidence and a healthier smile.
+    </p>
+    <ul class="about-checklist">
+      <li><div class="check-icon">✓</div>Advanced modern dental technology</li>
+      <li><div class="check-icon">✓</div>Spotless, hygienic &amp; welcoming environment</li>
+      <li><div class="check-icon">✓</div>Friendly, professional dental team</li>
+      <li><div class="check-icon">✓</div>Pain-free, patient-first approach</li>
+      <li><div class="check-icon">✓</div>Women-owned — trusted by Sacramento families</li>
+    </ul>
+    <div class="about-address">
+      <strong>📍 Our Location</strong>
+      2420 Del Paso Rd #125, Sacramento, CA 95834<br/>
+      Open Mon–Fri · 9:00 AM onwards
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ──────────────────────────────────── -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <span class="section-tag">What We Offer</span>
+    <h2 class="section-title">Comprehensive <em>Dental Services</em></h2>
+    <p class="section-sub">From your very first check-up to advanced implant surgery, our clinic provides a full range of dental treatments — all delivered with the utmost care and comfort.</p>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <div class="service-img">
+        <img src="images/us3.jpg" alt="Root Canal Treatment"/>
+        <div class="service-icon-badge">🦷</div>
+      </div>
+      <div class="service-body">
+        <h3>Root Canal Treatment</h3>
+        <p>Painless, precision root canal therapy to save your natural teeth and relieve discomfort — gently and effectively.</p>
+        <a class="service-link" href="#contact">Book Appointment</a>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-img">
+        <img src="images/us4.jpg" alt="Dental Implants"/>
+        <div class="service-icon-badge">💜</div>
+      </div>
+      <div class="service-body">
+        <h3>Dental Implants</h3>
+        <p>Permanent, natural-looking implants that restore your smile and confidence with long-lasting, beautiful results.</p>
+        <a class="service-link" href="#contact">Book Appointment</a>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-img">
+        <img src="images/us5.jpg" alt="Crowns &amp; Bridges"/>
+        <div class="service-icon-badge">👑</div>
+      </div>
+      <div class="service-body">
+        <h3>Crowns &amp; Bridges</h3>
+        <p>Custom-crafted prosthetics to restore damaged or missing teeth — strong, aesthetic, and built to last.</p>
+        <a class="service-link" href="#contact">Book Appointment</a>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-img">
+        <img src="images/us6.jpg" alt="Teeth Whitening"/>
+        <div class="service-icon-badge">✨</div>
+      </div>
+      <div class="service-body">
+        <h3>Teeth Whitening</h3>
+        <p>Professional whitening treatments for a visibly brighter smile — safe, fast, and highly effective in one session.</p>
+        <a class="service-link" href="#contact">Book Appointment</a>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-img">
+        <img src="images/us7.jpg" alt="Orthodontics"/>
+        <div class="service-icon-badge">😁</div>
+      </div>
+      <div class="service-body">
+        <h3>Orthodontics</h3>
+        <p>Braces and modern aligners to correct bite, spacing, and alignment for a confident, functional smile.</p>
+        <a class="service-link" href="#contact">Book Appointment</a>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-img">
+        <img src="images/us8.jpg" alt="Scaling &amp; Hygiene"/>
+        <div class="service-icon-badge">🧼</div>
+      </div>
+      <div class="service-body">
+        <h3>Scaling &amp; Hygiene</h3>
+        <p>Thorough cleaning and preventive care in a spotless, sterilised environment using the latest modern equipment.</p>
+        <a class="service-link" href="#contact">Book Appointment</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── GALLERY STRIP ─────────────────────────────── -->
+<div class="gallery-strip" id="gallery">
+  <div class="gallery-strip-inner reveal">
+    <div><img src="images/us1.jpg" alt="Clinic Exterior"/></div>
+    <div><img src="images/us2.jpg" alt="Clinic Interior"/></div>
+  </div>
+</div>
+
+<!-- ─── REVIEWS ───────────────────────────────────── -->
+<section class="reviews" id="reviews">
+  <div class="reviews-top reveal">
+    <div>
+      <span class="section-tag">Patient Stories</span>
+      <h2 class="section-title">What Our Patients <em>Say</em></h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.6)">Rated among Sacramento's finest dental practices — trusted by families for exceptional care.</p>
+    </div>
+    <div class="reviews-rating-block">
+      <span class="big-rating">4.9</span>
+      <div class="big-rating-info">
+        <span class="stars-row">★★★★★</span>
+        <span class="reviews-count">295 Google Reviews</span>
+      </div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Love the location, friendly and welcoming staff. Clean environment, positive energy, and the dental assistant was professional as well as friendly. The dentist was knowledgeable, caring, and encouraging!"</p>
+      <div class="review-author">
+        <div class="author-avatar">M</div>
+        <div class="author-info">
+          <span class="author-name">Marilyn</span>
+          <span class="author-meta">3 months ago</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I have been taking my parents here since last year and every time we receive the best customer service, from the reception and dentist. All staff are very friendly and provide all the information needed."</p>
+      <div class="review-author">
+        <div class="author-avatar">MC</div>
+        <div class="author-info">
+          <span class="author-name">Monina Cubacub</span>
+          <span class="author-meta">Local Guide · 3 months ago</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The staff was very kind, patient, and welcoming. The place was clean, well-organized, and the overall service was excellent. Truly great experience — highly recommend this clinic!"</p>
+      <div class="review-author">
+        <div class="author-avatar">MU</div>
+        <div class="author-info">
+          <span class="author-name">Muhammad Umer Arshad</span>
+          <span class="author-meta">5 months ago</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Excellent doctor and staff!!! Very thorough and caring. I felt genuinely listened to. The whole process was smooth and comfortable from start to finish."</p>
+      <div class="review-author">
+        <div class="author-avatar">VP</div>
+        <div class="author-info">
+          <span class="author-name">Verified Patient</span>
+          <span class="author-meta">Dental Treatment</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Thrilled to have found such a great office with great people! Short wait times, friendly staff, and a comfortable environment. This is now my permanent dentist."</p>
+      <div class="review-author">
+        <div class="author-avatar">VP</div>
+        <div class="author-info">
+          <span class="author-name">Verified Patient</span>
+          <span class="author-meta">General Checkup</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The clinic is spotless with modern equipment. Everyone on the team was genuinely caring and professional. Best dental care I've received in Sacramento."</p>
+      <div class="review-author">
+        <div class="author-avatar">VP</div>
+        <div class="author-info">
+          <span class="author-name">Verified Patient</span>
+          <span class="author-meta">Cosmetic Treatment</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────── -->
+<section class="contact-cta" id="contact">
+  <div class="contact-info reveal">
+    <span class="section-tag">Get In Touch</span>
+    <h2 class="section-title">Visit Us in <em>Sacramento</em></h2>
+    <p class="section-sub">We're conveniently located in Sacramento and ready to welcome you. Call us or walk in — we look forward to caring for your smile.</p>
+
+    <div class="contact-item">
+      <div class="contact-icon">📍</div>
+      <div class="contact-detail">
+        <strong>Address</strong>
+        <span>2420 Del Paso Rd #125, Sacramento, CA 95834</span>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">📞</div>
+      <div class="contact-detail">
+        <strong>Phone</strong>
+        <a href="tel:+19163333534">+1 (916) 333-3534</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">🕐</div>
+      <div class="contact-detail">
+        <strong>Hours</strong>
+        <span>Mon–Fri: Open from 9:00 AM</span>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">♀</div>
+      <div class="contact-detail">
+        <strong>Practice Type</strong>
+        <span>Women-Owned Dental Practice</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-box reveal">
+    <h3>Ready for a Healthier Smile?</h3>
+    <p>Call us today to schedule your appointment. New patients welcome — we accept most insurance plans and offer flexible scheduling.</p>
+    <div class="cta-phone">
+      <a class="cta-phone-num" href="tel:+19163333534">+1 (916) 333-3534</a>
+    </div>
+    <a class="btn-cta-white" href="tel:+19163333534">📞 Call &amp; Book Now</a>
+    <div class="hours-badge">
+      <span class="hours-dot"></span>
+      Opens at 9:00 AM · Mon–Fri
+    </div>
+  </div>
+</section>
+
+<!-- ─── MAP ───────────────────────────────────────── -->
+<div class="map-section">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3116!2d-121.4846!3d38.6405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ad134dd666047%3A0xabcd1234!2s2420%20Del%20Paso%20Rd%20%23125%2C%20Sacramento%2C%20CA%2095834!5e0!3m2!1sen!2sus!4v1700000000000"
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+<!-- ─── FOOTER ────────────────────────────────────── -->
+<footer>
+  <div class="footer-brand">
+    <img src="images/uslogo.jpg" alt="US Dental Care"/>
+    <div class="footer-brand-text">
+      <strong>US Dental Care</strong>
+      <span>Sacramento, California</span>
+    </div>
+  </div>
+  <div class="footer-center">
+    2420 Del Paso Rd #125, Sacramento, CA 95834 &nbsp;·&nbsp;
+    <a href="tel:+19163333534">+1 (916) 333-3534</a><br/>
+    © 2025 US Dental Care. All rights reserved. Women-Owned Practice.
+  </div>
+  <div class="footer-right">
+    <a class="footer-link" href="#about">About</a>
+    <a class="footer-link" href="#services">Services</a>
+    <a class="footer-link" href="#reviews">Reviews</a>
+    <a class="footer-link" href="#contact">Contact</a>
+  </div>
+</footer>
+
+<!-- ─── FLOATING CALL BUTTON ─────────────────────── -->
+<a class="float-call" href="tel:+19163333534">
+  <div class="float-call-icon">📞</div>
+  <div class="float-call-text">
+    <span>Call Us Now</span>
+    <span>916-333-3534</span>
+  </div>
+</a>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Smooth navbar shadow on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 20
+      ? '0 4px 32px rgba(26,76,139,0.13)'
+      : '0 2px 24px rgba(26,76,139,0.07)';
+  });
+</script>
+</body>
+</html>
